@@ -4,7 +4,7 @@ project (VELOC VERSION 1.6)
 ##### Global settings
 include(GNUInstallDirs)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-add_definitions(-O2 -g -Wall -D__BENCHMARK -D__ASSERT -D__INFO)
+#add_definitions(-O2 -g -Wall -D__BENCHMARK -D__ASSERT -D__INFO)
 set(CMAKE_CXX_STANDARD 17)
 
 ##### Configuration setting
@@ -23,6 +23,10 @@ else()
 endif()
 
 ##### Find dependencies
+
+find_package(LibPressioTools REQUIRED)
+find_package(LibPressio REQUIRED)
+find_package(std_compat REQUIRED)
 
 # PThreads
 find_package(Threads REQUIRED)

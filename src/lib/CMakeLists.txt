@@ -2,6 +2,9 @@ add_library (veloc-client SHARED
   veloc.cpp
   client.cpp
   posix_cache.cpp
+  ${VELOC_SOURCE_DIR}/include/veloc/libpressio.hpp
+  ${VELOC_SOURCE_DIR}/include/veloc/bitsery.hpp
+  ${VELOC_SOURCE_DIR}/include/veloc/cereal.hpp
   ${PROJECT_SOURCE_DIR}/src/backend/work_queue.cpp
 )
 
@@ -13,6 +16,7 @@ target_include_directories (veloc-client PUBLIC $<BUILD_INTERFACE:${VELOC_SOURCE
   $<BUILD_INTERFACE:${VELOC_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
+target_link_libraries (veloc-client PUBLIC LibPressioTools::libpressio_meta)
 target_link_libraries (veloc-client PUBLIC veloc::modules ${COMM_QUEUE_LIBRARIES})
 set_target_properties (veloc-client PROPERTIES EXPORT_NAME client)
 
